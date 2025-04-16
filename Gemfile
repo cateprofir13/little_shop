@@ -42,6 +42,7 @@ group :development, :test do
   gem "simplecov"
   gem "pry"
   gem "pgreset"
+  gem 'shoulda-matchers'
 end
 
 group :development do
