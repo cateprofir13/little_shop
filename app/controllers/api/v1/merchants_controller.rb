@@ -1,6 +1,6 @@
 module Api
   module V1
-    class MerchantsController < BaseController
+    class MerchantsController < ApplicationController
       
     end
   end
