@@ -42,6 +42,7 @@ group :development, :test do
   gem "simplecov"
   gem "pry"
   gem "pgreset"
+  gem 'jsonapi-serializer'
   gem 'shoulda-matchers'
 end
 
