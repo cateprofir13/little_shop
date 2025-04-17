@@ -1,6 +1,6 @@
 module Api
   module V1
-    class ItemsController < ApplicationController
+    class ItemsController < BaseController
       def index
         items = if params[:sorted] == "price" || params[:sort] == "price" || params[:sort] == "price_asc"
                   Item.order(unit_price: :asc)
@@ -23,36 +23,18 @@ module Api
         if item.save
           render json: ItemSerializer.new(item), status: :created
         else
-          render json: { 
-            message: "your query could not be completed",
-            errors: item.errors.full_messages
-          }, status: :unprocessable_entity
+          item.save!
         end
       end
 
       def update
         item = Item.find(params[:id])
-        
-        # Check if merchant_id exists
-        if params[:merchant_id].present?
-          begin
-            Merchant.find(params[:merchant_id])
-          rescue ActiveRecord::RecordNotFound
-            render json: { 
-              message: "your query could not be completed",
-              errors: ["Merchant must exist"]
-            }, status: :not_found
-            return
-          end
-        end
+        Merchant.find(params[:merchant_id]) if params[:merchant_id].present?
         
         if item.update(item_params)
           render json: ItemSerializer.new(item)
         else
-          render json: { 
-            message: "your query could not be completed",
-            errors: item.errors.full_messages
-          }, status: :unprocessable_entity
+          item.update!(item_params)
         end
       end
       

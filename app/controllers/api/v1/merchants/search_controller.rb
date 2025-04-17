@@ -2,15 +2,9 @@ module Api
   module V1
     module Merchants
       class SearchController < BaseController
+        before_action :validate_search_parameters
+        
         def show
-          if params[:name].blank?
-            render json: { 
-              message: "your query could not be completed", 
-              errors: ["No valid search parameter"] 
-            }, status: :bad_request
-            return
-          end
-          
           merchant = find_merchant
           
           if merchant.nil?
@@ -21,20 +15,19 @@ module Api
         end
 
         def index
-          if params[:name].blank?
-            render json: { 
-              message: "your query could not be completed", 
-              errors: ["No valid search parameter"] 
-            }, status: :bad_request
-            return
-          end
-          
           merchants = find_all_merchants
           
           render json: MerchantSerializer.new(merchants)
         end
         
         private
+        
+        def validate_search_parameters
+          if all_params_blank?([:name])
+            render_error("No valid search parameter")
+            return
+          end
+        end
         
         def search_params
           params.permit(:name)
