@@ -1,7 +1,6 @@
 module Api
   module V1
     class MerchantsController < ApplicationController
-
       def index
         merchants = Merchant.all
         render json: MerchantSerializer.new(merchants)
@@ -29,11 +28,11 @@ module Api
         render json: MerchantSerializer.new(merchant)
       end
 
-     private
-     def merchant_params
-      params.require(:merchant).permit(:name)
-    end
-
+      private
+      
+      def merchant_params
+        params.require(:merchant).permit(:name)
+      end
     end
   end
 end
