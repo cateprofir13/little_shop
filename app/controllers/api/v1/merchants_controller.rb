@@ -1,6 +1,6 @@
 module Api
   module V1
-    class MerchantsController < ApplicationController
+    class MerchantsController < BaseController
       def index
         merchants = Merchant.all
         render json: MerchantSerializer.new(merchants)
