@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   # Search Endpoints
   get "/api/v1/merchants/find", to: "api/v1/merchants/search#show"
+  get "/api/v1/merchants/find_all", to: "api/v1/merchants/search#index"
   get "/api/v1/items/find_all", to: "api/v1/items/search#index"
   
   # Merchant endpoints
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   get "/api/v1/merchants/:id", to: "api/v1/merchants#show"
   post "/api/v1/merchants", to: "api/v1/merchants#create"
   patch "/api/v1/merchants/:id", to: "api/v1/merchants#update"
-  put "/api/v1/merchants/:id", to: "api/v1/merchants#update"  # Add PUT route
+  put "/api/v1/merchants/:id", to: "api/v1/merchants#update"
   delete "/api/v1/merchants/:id", to: "api/v1/merchants#destroy"
   
   # Merchant nested endpoints
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   get "/api/v1/items/:id", to: "api/v1/items#show"
   post "/api/v1/items", to: "api/v1/items#create"
   patch "/api/v1/items/:id", to: "api/v1/items#update"
-  put "/api/v1/items/:id", to: "api/v1/items#update"  # Add this PUT route
+  put "/api/v1/items/:id", to: "api/v1/items#update"
   delete "/api/v1/items/:id", to: "api/v1/items#destroy"
   
   # Item nested endpoints
