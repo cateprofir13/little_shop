@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # Search Endpoints
   get "/api/v1/merchants/find", to: "api/v1/merchants/search#show"
   get "/api/v1/merchants/find_all", to: "api/v1/merchants/search#index"
+  get "/api/v1/items/find", to: "api/v1/items/search#show"
   get "/api/v1/items/find_all", to: "api/v1/items/search#index"
   
   # Merchant endpoints

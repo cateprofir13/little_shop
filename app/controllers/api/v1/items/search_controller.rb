@@ -2,6 +2,40 @@ module Api
   module V1
     module Items
       class SearchController < BaseController
+        def show
+          if invalid_parameter_combinations?
+            render json: { 
+              message: "your query could not be completed", 
+              errors: ["Cannot combine name with price parameters"] 
+            }, status: :bad_request
+            return
+          end
+
+          if negative_price_params?
+            render json: { 
+              message: "your query could not be completed",
+              errors: ["Price parameters cannot be negative"] 
+            }, status: :bad_request
+            return
+          end
+          
+          if all_params_blank?
+            render json: { 
+              message: "your query could not be completed", 
+              errors: ["No valid search parameter"] 
+            }, status: :bad_request
+            return
+          end
+          
+          item = find_item
+          
+          if item.nil?
+            render json: { data: {} }
+          else
+            render json: ItemSerializer.new(item)
+          end
+        end
+
         def index
           if invalid_parameter_combinations?
             render json: { 
@@ -49,6 +83,21 @@ module Api
         def negative_price_params?
           (params[:min_price].present? && params[:min_price].to_f < 0) || 
           (params[:max_price].present? && params[:max_price].to_f < 0)
+        end
+        
+        def find_item
+          if params[:name].present?
+            Item.where('lower(name) ILIKE ?', "%#{params[:name].downcase}%").first
+          elsif params[:min_price].present? && params[:max_price].present?
+            Item.where('unit_price >= ? AND unit_price <= ?', params[:min_price], params[:max_price])
+               .order(unit_price: :asc).first
+          elsif params[:min_price].present?
+            Item.where('unit_price >= ?', params[:min_price])
+               .order(unit_price: :asc).first
+          elsif params[:max_price].present?
+            Item.where('unit_price <= ?', params[:max_price])
+               .order(unit_price: :asc).first
+          end
         end
         
         def find_items
