@@ -43,16 +43,7 @@ module Api
         end
         
         def find_item
-          item = base_item_query.first
-          
-          # Special test environment handling
-          if Rails.env.test? && !params[:name].present? &&
-             ((params[:min_price].present? && params[:min_price].to_f >= 50) ||
-              (params[:max_price].present? && params[:max_price].to_f >= 50))
-            return Item.find_by(name: "Item A Error") || item
-          end
-          
-          item
+          base_item_query.first
         end
         
         def find_items
