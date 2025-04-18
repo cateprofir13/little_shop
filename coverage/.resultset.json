@@ -1,17 +1,48 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/customer_spec.rb": {
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/requests/api:v1/merchant_customers_request_spec.rb": {
         "lines": [
           1,
           null,
           1,
           1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           1,
           1,
-          2,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          3,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
           null,
           null
         ]
@@ -323,10 +354,224 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/customer.rb": {
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/requests/api:v1/merchant_invoices_request_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/requests/api:v1/merchant_items_request_spec.rb": {
+        "lines": [
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/requests/api:v1/merchants_request_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          3,
+          3,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          2,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/controllers/api/v1/merchant_customers_controller.rb": {
         "lines": [
           1,
           1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/merchant.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
           null
         ]
       },
@@ -337,45 +582,10 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/invoice_item_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          2,
-          2,
-          null,
-          null
-        ]
-      },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/invoice_item.rb": {
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/customer.rb": {
         "lines": [
           1,
           1,
-          1,
-          null
-        ]
-      },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/invoice_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          2,
-          2,
-          2,
-          2,
-          null,
           null
         ]
       },
@@ -389,19 +599,41 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/item_spec.rb": {
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/serializers/customer_serializer.rb": {
         "lines": [
           1,
-          null,
           1,
           1,
-          null,
-          null,
+          null
+        ]
+      },
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/controllers/api/v1/merchant_invoices_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
           1,
           1,
           2,
-          2,
+          1,
+          1,
           null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/serializers/invoice_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
           null
         ]
       },
@@ -413,10 +645,67 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/merchant_spec.rb": {
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/controllers/api/v1/merchant_items_controller.rb": {
         "lines": [
           1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
           null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/serializers/item_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/controllers/api/v1/merchants_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          2,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
           1,
           1,
           null,
@@ -424,55 +713,26 @@
           1,
           1,
           2,
-          2,
           null,
           null,
           1,
           1,
-          1,
-          1,
           null,
-          1,
-          1,
+          null,
+          null,
           null,
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/merchant.rb": {
+      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/serializers/merchant_serializer.rb": {
         "lines": [
           1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/transaction_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          2,
-          null,
-          null
-        ]
-      },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/transaction.rb": {
-        "lines": [
           1,
           1,
           null
         ]
       }
     },
-    "timestamp": 1744985252
+    "timestamp": 1745015822
   }
 }

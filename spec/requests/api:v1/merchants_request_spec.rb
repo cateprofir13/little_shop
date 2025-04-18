@@ -79,4 +79,17 @@ describe "Merchants API", type: :request do
     expect(merchant.name).to_not eq(previous_name)
     expect(merchant.name).to eq("Profir Suiter")
   end
+
+  it "returns a 404 and error message if merchant is not found" do
+    
+    get "/api/v1/merchants/999999"
+  
+    expect(response).to have_http_status(:not_found)
+  
+    error_response = JSON.parse(response.body, symbolize_names: true)
+    expect(error_response).to have_key(:errors)
+    expect(error_response[:errors].first).to match(/Couldn't find Merchant/)
+  end
+
+
 end
