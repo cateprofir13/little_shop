@@ -1,6 +1,7 @@
 module Api
   module V1
     class MerchantsController < ApplicationController
+      rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
       def index
         merchants = Merchant.all
@@ -29,10 +30,14 @@ module Api
         render json: MerchantSerializer.new(merchant)
       end
 
-     private
-     def merchant_params
-      params.require(:merchant).permit(:name)
-    end
+      private
+      def merchant_params
+        params.require(:merchant).permit(:name)
+      end
+
+      def record_not_found(error)
+        render json: { errors: [error.message] }, status: :not_found
+      end
 
     end
   end
