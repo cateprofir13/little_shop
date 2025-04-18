@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/customer_spec.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/api/v1/base_controller_spec.rb": {
         "lines": [
           1,
           null,
@@ -11,12 +11,20 @@
           null,
           1,
           1,
-          2,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
           null,
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/rails_helper.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -97,7 +105,7 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/config/environment.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -106,7 +114,7 @@
           1
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/config/application.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/config/application.rb": {
         "lines": [
           1,
           null,
@@ -154,7 +162,7 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/config/boot.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -162,7 +170,7 @@
           1
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/config/environments/test.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -230,7 +238,7 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/config/initializers/cors.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/config/initializers/cors.rb": {
         "lines": [
           null,
           null,
@@ -251,7 +259,7 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/config/initializers/filter_parameter_logging.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -263,7 +271,7 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/config/initializers/inflections.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -283,7 +291,7 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/config/routes.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/config/routes.rb": {
         "lines": [
           1,
           null,
@@ -297,6 +305,13 @@
           1,
           1,
           1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           null,
           null,
@@ -310,11 +325,335 @@
           1,
           1,
           1,
+          1,
           null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/api/v1/item_merchants_controller_spec.rb": {
+        "lines": []
+      },
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/api/v1/items/search_controller_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          26,
+          26,
+          null,
+          26,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          26,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          26,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          26,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          26,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          26,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          13,
+          13,
+          null,
+          null,
+          1,
+          13,
+          13,
+          13,
+          13,
+          13,
+          null,
+          null,
+          1,
+          13,
+          null,
+          null,
+          1,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          null,
+          null,
+          1,
+          14,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
           null,
           1,
           null,
           null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          4,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          3,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          3,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          14,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          3,
+          1,
+          null,
+          3,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          3,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          4,
+          4,
+          null,
+          4,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          3,
+          3,
+          null,
+          3,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          5,
+          5,
+          null,
+          5,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
           1,
           1,
           null,
@@ -323,21 +662,42 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/customer.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/api/v1/items_controller_spec.rb": {
+        "lines": []
+      },
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/api/v1/merchants/search_controller_spec.rb": {
+        "lines": []
+      },
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/models/customer_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/models/customer.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/application_record.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/invoice_item_spec.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/models/invoice_item_spec.rb": {
         "lines": [
           1,
           null,
@@ -353,7 +713,7 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/invoice_item.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/models/invoice_item.rb": {
         "lines": [
           1,
           1,
@@ -361,35 +721,7 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/invoice_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          2,
-          2,
-          2,
-          2,
-          null,
-          null
-        ]
-      },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/invoice.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/item_spec.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/models/invoice_spec.rb": {
         "lines": [
           1,
           null,
@@ -401,19 +733,23 @@
           1,
           2,
           2,
+          2,
+          2,
           null,
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/item.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/models/invoice.rb": {
         "lines": [
+          1,
+          1,
           1,
           1,
           1,
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/merchant_spec.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/models/item_spec.rb": {
         "lines": [
           1,
           null,
@@ -426,10 +762,45 @@
           2,
           2,
           null,
+          null,
+          1,
+          2,
+          2,
+          2,
+          2,
+          null,
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/merchant.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/models/item.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/models/merchant_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/models/merchant.rb": {
         "lines": [
           1,
           1,
@@ -437,7 +808,7 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/models/transaction_spec.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/models/transaction_spec.rb": {
         "lines": [
           1,
           null,
@@ -452,14 +823,14 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/models/transaction.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/models/transaction.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/spec/requests/merchants_request_spec.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/spec/requests/merchants_request_spec.rb": {
         "lines": [
           1,
           null,
@@ -545,7 +916,7 @@
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/controllers/api/v1/merchants_controller.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/controllers/api/v1/merchants_controller.rb": {
         "lines": [
           1,
           1,
@@ -555,8 +926,9 @@
           1,
           null,
           null,
+          null,
           1,
-          1,
+          2,
           1,
           null,
           null,
@@ -577,22 +949,215 @@
           null,
           null,
           1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/controllers/api/v1/base_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
           1,
           2,
           null,
           null,
           null,
           null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          13,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          19,
+          null,
+          null,
+          null,
+          1,
+          24,
+          21,
+          null,
+          null,
+          1,
+          26,
+          null,
+          null,
+          1,
+          52,
+          null,
+          null,
+          null,
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/controllers/application_controller.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/cateprofir/Desktop/Mod2/little_shop_all/little_shop/app/serializers/merchant_serializer.rb": {
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/controllers/api/v1/items_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/controllers/api/v1/items/search_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          6,
+          6,
+          2,
+          null,
+          4,
+          null,
+          null,
+          null,
+          1,
+          7,
+          7,
+          null,
+          null,
+          1,
+          null,
+          1,
+          26,
+          2,
+          2,
+          null,
+          null,
+          24,
+          5,
+          5,
+          null,
+          null,
+          19,
+          2,
+          2,
+          null,
+          null,
+          17,
+          4,
+          null,
+          null,
+          null,
+          null,
+          1,
+          6,
+          null,
+          null,
+          1,
+          7,
+          null,
+          null,
+          1,
+          13,
+          5,
+          8,
+          2,
+          null,
+          6,
+          4,
+          2,
+          2,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/serializers/item_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/justjoe/Desktop/TuringMod2/projects/little_shop/app/serializers/merchant_serializer.rb": {
         "lines": [
           1,
           1,
@@ -601,6 +1166,6 @@
         ]
       }
     },
-    "timestamp": 1744898950
+    "timestamp": 1745011469
   }
 }

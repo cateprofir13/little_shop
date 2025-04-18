@@ -32,8 +32,8 @@ module Api
           params[:min_price].to_f > params[:max_price].to_f
       end
 
-      def negative_price_params?
-        (params[:min_price].present? && params[:min_price].to_f < 0) || 
+            def negative_price_params?
+        (params[:min_price].present? && params[:min_price].to_f <= 0) || 
         (params[:max_price].present? && params[:max_price].to_f < 0)
       end
       
