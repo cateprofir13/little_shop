@@ -34,17 +34,11 @@ module Api
         end
         
         def find_merchant
-          if params[:name].present?
-            Merchant.where('lower(name) ILIKE ?', "%#{params[:name].downcase}%").first
-          end
+          Merchant.search(params).first
         end
         
         def find_all_merchants
-          if params[:name].present?
-            Merchant.where('lower(name) ILIKE ?', "%#{params[:name].downcase}%")
-          else
-            []
-          end
+          Merchant.search(params)
         end
       end
     end
