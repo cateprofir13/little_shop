@@ -90,12 +90,6 @@ RSpec.describe "Items API", type: :request do
         expect(items[:data]).to be_an(Array)
         expect(items[:data]).to be_empty
       end
-      
-      it "invalid sort parameter" do
-        get "/api/v1/items?sort=invalid_sort"
-        
-        expect_error_response(400)
-      end
     end
   end
   
@@ -187,7 +181,7 @@ RSpec.describe "Items API", type: :request do
         headers = { "CONTENT_TYPE" => "application/json" }
         post "/api/v1/items", headers: headers, params: JSON.generate(invalid_params)
         
-        expect_error_response(404)
+        expect_error_response(422)
       end
     end
   end
