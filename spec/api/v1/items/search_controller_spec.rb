@@ -189,6 +189,12 @@ RSpec.describe "Items Search API", type: :request do
         get "/api/v1/items/find?name="
         expect_error_response
       end
+
+      it "parameter is unexpected" do
+        get "/api/v1/items/find?unexpected_param=value"
+        
+        expect_error_response
+      end
       
       it "decimal min_price=0" do
         get "/api/v1/items/find?min_price=0"
@@ -311,6 +317,12 @@ RSpec.describe "Items Search API", type: :request do
       
       it "name and price parameters are mixed" do
         get "/api/v1/items/find_all?name=item&min_price=50"
+        expect_error_response
+      end
+
+      it "parameter is unexptected" do
+        get "/api/v1/items/find_all?unexpected_param=value"
+        
         expect_error_response
       end
       
