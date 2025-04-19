@@ -4,7 +4,12 @@ module Api
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
       def index
-        merchants = Merchant.all
+        merchants = if params[:returned_items] == "true"
+                      Merchant.with_returned_items
+                    else
+                      Merchant.all
+                    end
+      
         render json: MerchantSerializer.new(merchants)
       end
 
