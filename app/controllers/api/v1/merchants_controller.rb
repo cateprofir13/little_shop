@@ -4,15 +4,26 @@ module Api
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
       def index
+
         merchants = if params[:returned_items] == "true"
                       Merchant.with_returned_items
                     else
                       Merchant.all
                     end
       
+
+        merchants = Merchant.all
+        
+        if params[:sorted] == "age"
+          merchants = merchants.sorted_by_created_at
+        end
+
+        if params[:count] == "true"
+          merchants = merchants.with_item_counts
+        end
+
         render json: MerchantSerializer.new(merchants)
       end
-
       
       def show
         merchant = Merchant.find(params[:id])
@@ -32,6 +43,11 @@ module Api
 
       def update
         merchant = Merchant.update(params[:id], merchant_params)
+        render json: MerchantSerializer.new(merchant)
+      end
+
+      def with_item_counts
+        merchant = Merchant.with_item_counts
         render json: MerchantSerializer.new(merchant)
       end
 

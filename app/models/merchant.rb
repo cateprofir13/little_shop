@@ -6,10 +6,18 @@ has_many :invoices
     %w[asc desc].include?(order.downcase) ? order(created_at: order.downcase) : all
   end
 
-
   def self.with_returned_items
     joins(items: { invoice_items: :invoice })
       .where(invoices: { status: 'returned' })
       .distinct
+
+  def self.with_item_counts
+     left_joins(:items)
+      .select("merchants.*, COUNT(DISTINCT items.id) AS item_count")
+      .group("merchants.id")
+  end
+
+  def item_count
+    self[:item_count] || items.count
   end
 end
