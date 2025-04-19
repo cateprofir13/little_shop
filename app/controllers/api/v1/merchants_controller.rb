@@ -5,6 +5,15 @@ module Api
 
       def index
         merchants = Merchant.all
+        
+        if params[:sorted] == "age"
+          merchants = merchants.sorted_by_created_at
+        end
+
+        if params[:count] == "true"
+          merchants = merchants.with_item_counts
+        end
+
         render json: MerchantSerializer.new(merchants)
       end
 
@@ -27,6 +36,11 @@ module Api
 
       def update
         merchant = Merchant.update(params[:id], merchant_params)
+        render json: MerchantSerializer.new(merchant)
+      end
+
+      def with_item_counts
+        merchant = Merchant.with_item_counts
         render json: MerchantSerializer.new(merchant)
       end
 
