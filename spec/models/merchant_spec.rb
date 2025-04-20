@@ -49,7 +49,7 @@ RSpec.describe Merchant, type: :model do
     expect(result).to include(merchant_with_return)
     expect(result).not_to include(merchant_no_return)
   end
-end
+
 
   it "returns merchants with item counts" do
     merchant1 = Merchant.create(name:"Alvin")
