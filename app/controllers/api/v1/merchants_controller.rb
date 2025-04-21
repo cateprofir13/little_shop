@@ -2,7 +2,7 @@ module Api
   module V1
     class MerchantsController < BaseController
       def index
-        if params[:returned_items] == "true"
+        if params[:returned_items] == "true" || params[:status] == "returned"
           merchants = Merchant.with_returned_items
       
         elsif params[:sorted] == "age"
