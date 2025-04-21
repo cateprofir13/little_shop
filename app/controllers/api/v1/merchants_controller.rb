@@ -2,10 +2,22 @@ module Api
   module V1
     class MerchantsController < BaseController
       def index
-        merchants = Merchant.all
+        if params[:returned_items] == "true"
+          merchants = Merchant.with_returned_items
+      
+        elsif params[:sorted] == "age"
+          merchants = Merchant.sorted_by_created_at
+      
+        elsif params[:count] == "true"
+          merchants = Merchant.with_item_counts
+          render json: MerchantSerializer.new(merchants, { params: { include_item_count: true } }) and return
+      
+        else
+          merchants = Merchant.all
+        end
+      
         render json: MerchantSerializer.new(merchants)
       end
-
       
       def show
         merchant = Merchant.find(params[:id])
@@ -13,8 +25,13 @@ module Api
       end
 
       def create
-        merchant = Merchant.create(merchant_params)
-        render json: MerchantSerializer.new(merchant), status: :created
+        merchant = Merchant.new(merchant_params)
+      
+        if merchant.save
+          render json: MerchantSerializer.new(merchant), status: :created
+        else
+          render json: { errors: merchant.errors.full_messages }, status: :bad_request
+        end
       end
 
       def destroy
