@@ -1,9 +1,6 @@
 module Api
   module V1
-    class MerchantsController < ApplicationController
-      rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-      rescue_from ActionController::ParameterMissing, with: :missing_param
-
+    class MerchantsController < BaseController
       def index
         if params[:returned_items] == "true"
           merchants = Merchant.with_returned_items
@@ -49,18 +46,10 @@ module Api
       end
 
       private
+      
       def merchant_params
         params.require(:merchant).permit(:name)
       end
-
-      def record_not_found(error)
-        render json: { errors: [error.message] }, status: :not_found
-      end
-      
-      def missing_param(error)
-        render json: { errors: [error.message] }, status: :bad_request
-      end
-
     end
   end
 end

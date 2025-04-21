@@ -1,20 +1,41 @@
 module Api
   module V1
-    class ItemsController < ApplicationController
+    class ItemsController < BaseController
       def index
-        render json: ItemSerializer.new(Item.all)
+        items = if params[:sorted] == "price" || params[:sort] == "price" || params[:sort] == "price_asc"
+                  Item.order(unit_price: :asc)
+                elsif params[:sort] == "price_desc"
+                  Item.order(unit_price: :desc)
+                else
+                  Item.all
+                end
+                
+        render json: ItemSerializer.new(items)
       end
       
       def show
-        render json: ItemSerializer.new(Item.find(params[:id]))
+        item = Item.find(params[:id])
+        render json: ItemSerializer.new(item)
       end
       
       def create
-        render json: ItemSerializer.new(Item.create!(item_params[:item])), status: :created
+        item = Item.new(item_params)
+        if item.save
+          render json: ItemSerializer.new(item), status: :created
+        else
+          item.save!
+        end
       end
-      
+
       def update
-        render json: ItemSerializer.new(Item.update!(item_params[:item])), status: :ok
+        item = Item.find(params[:id])
+        Merchant.find(params[:merchant_id]) if params[:merchant_id].present?
+        
+        if item.update(item_params)
+          render json: ItemSerializer.new(item)
+        else
+          item.update!(item_params)
+        end
       end
       
       def destroy
@@ -26,7 +47,7 @@ module Api
       private
       
       def item_params
-        params.require(:item).permit(:name, :description, :unit_price, :merchant_id)
+        params.permit(:name, :description, :unit_price, :merchant_id)
       end
     end
   end
