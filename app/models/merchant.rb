@@ -1,7 +1,7 @@
 class Merchant < ApplicationRecord
-has_many :items, dependent: :destroy
-has_many :invoices
-validates_presence_of :name
+  has_many :items, dependent: :destroy
+  has_many :invoices
+  validates_presence_of :name
 
 
   def self.search_by_name(name)
@@ -17,6 +17,7 @@ validates_presence_of :name
       none
     end
   end
+
   def self.sorted_by_created_at(order = "desc")
     %w[asc desc].include?(order.downcase) ? order(created_at: order.downcase) : all
   end
