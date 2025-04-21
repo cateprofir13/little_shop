@@ -16,7 +16,7 @@ validates_presence_of :name
     else
       none
     end
-
+  end
   def self.sorted_by_created_at(order = "desc")
     %w[asc desc].include?(order.downcase) ? order(created_at: order.downcase) : all
   end
