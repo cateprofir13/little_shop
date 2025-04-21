@@ -26,11 +26,11 @@ module Api
 
       def create
         merchant = Merchant.new(merchant_params)
-      
+        
         if merchant.save
           render json: MerchantSerializer.new(merchant), status: :created
         else
-          render json: { errors: merchant.errors.full_messages }, status: :bad_request
+          render_error(merchant.errors.full_messages)
         end
       end
 
