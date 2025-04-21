@@ -3,8 +3,14 @@ module Api
     class MerchantInvoicesController < BaseController
       def index
         merchant = Merchant.find(params[:merchant_id])
-        invoices = merchant.invoices
-        render json: InvoiceSerializer.new(invoices).serializable_hash
+        
+        if params[:status].present?
+          invoices = merchant.invoices.where(status: params[:status])
+        else
+          invoices = merchant.invoices
+        end
+        
+        render json: InvoiceSerializer.new(invoices)
       end
     end
   end
