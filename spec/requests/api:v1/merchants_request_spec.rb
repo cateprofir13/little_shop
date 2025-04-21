@@ -51,18 +51,21 @@ describe "Merchants API", type: :request do
     expect(created_merchant.name).to eq(merchant_params[:name])
   end
 
-  it 'can delete a merchant' do
-    merchant = Merchant.create(name: "Calvin D Suiter")
-
-    expect(Merchant.count).to eq(1)
-
-    delete "/api/v1/merchants/#{merchant.id}"
-
-    expect(response).to be_successful
-    expect(Merchant.count).to eq(0)
-
-    expect{Merchant.find(merchant.id) }.to raise_error(ActiveRecord::RecordNotFound)
+  it 'can delete a merchant and all its items' do
+    merchant = Merchant.create!(name: "Calvin D Suiter")
+    item1 = merchant.items.create!(name: "Thing 1", description: "desc", unit_price: 10.0)
+    item2 = merchant.items.create!(name: "Thing 2", description: "desc", unit_price: 15.0)
   
+    expect(Merchant.count).to eq(1)
+    expect(Item.count).to eq(2)
+  
+    delete "/api/v1/merchants/#{merchant.id}"
+  
+    expect(response).to have_http_status(:no_content)
+    expect(Merchant.count).to eq(0)
+    expect(Item.count).to eq(0) #cascadng
+  
+    expect { Merchant.find(merchant.id) }.to raise_error(ActiveRecord::RecordNotFound)
   end
 
   it 'can update a merchant' do
