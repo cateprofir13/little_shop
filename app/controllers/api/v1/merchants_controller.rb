@@ -12,6 +12,7 @@ module Api
       
         elsif params[:count] == "true"
           merchants = Merchant.with_item_counts
+          render json: MerchantSerializer.new(merchants, { params: { include_item_count: true } }) and return
       
         else
           merchants = Merchant.all
