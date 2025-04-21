@@ -29,6 +29,7 @@ describe "Merchants API", type: :request do
     expect(response).to be_successful
 
     merchant = JSON.parse(response.body, symbolize_names: true)
+
     expect(merchant).to have_key(:data)
 
     data = merchant[:data]
@@ -94,5 +95,64 @@ describe "Merchants API", type: :request do
     expect(error_response[:errors].first).to match(/Couldn't find Merchant/)
   end
 
+  it "returns serialized merchants with item_count when count=true is passed" do
+    merchant = Merchant.create!(name: "Test Merchant")
+    merchant.items.create!(name: "Item A", description: "desc", unit_price: 10)
+    merchant.items.create!(name: "Item B", description: "desc", unit_price: 15)
+  
+    get "/api/v1/merchants?count=true"
+  
+    expect(response).to be_successful
+  
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    merchant_data = parsed[:data].first
+  
+    expect(merchant_data[:attributes]).to include(:item_count)
+    expect(merchant_data[:attributes][:item_count]).to eq(2)
+  end
+
+
+  it "returns merchants sorted from newest to oldest via index controller" do
+    m1 = Merchant.create!(name: "Old", created_at: 3.days.ago)
+    m2 = Merchant.create!(name: "Mid", created_at: 2.days.ago)
+    m3 = Merchant.create!(name: "New", created_at: 1.day.ago)
+  
+    get "/api/v1/merchants?sorted=age"
+  
+    expect(response).to be_successful
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    names = parsed[:data].map { |m| m[:attributes][:name] }
+    expect(names).to eq(["New", "Mid", "Old"])
+  end
+
+  it "returns only merchants with returned items" do
+    merchant = Merchant.create!(name: "Returned Merchant")
+    item = merchant.items.create!(name: "Item A", description: "desc", unit_price: 10)
+    customer = Customer.create!(first_name: "Jane", last_name: "Doe")
+    invoice = Invoice.create!(status: "returned", merchant: merchant, customer: customer)
+    InvoiceItem.create!(item: item, invoice: invoice, quantity: 1, unit_price: 10)
+
+    get "/api/v1/merchants?returned_items=true"
+
+    expect(response).to be_successful
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed[:data].length).to eq(1)
+    expect(parsed[:data].first[:attributes][:name]).to eq("Returned Merchant")
+  end
+
+  it "returns merchants with item counts" do
+    merchant1 = Merchant.create(name:"Alvin")
+    merchant2 = Merchant.create(name:"Simon")
+
+    Item.create!(name: "Axe", description: "Tool", unit_price: 10, merchant: merchant2)
+    Item.create!(name: "Chainsaw", description: "Tool", unit_price: 30, merchant: merchant1)
+    Item.create!(name: "Wedge", description: "Tool", unit_price: 20, merchant: merchant2)
+
+    result = Merchant.with_item_counts
+
+    merchant_with_counts = result.map {|merchant| [merchant.name, merchant.item_count.to_i] }.to_h
+
+    expect(merchant_with_counts).to eq({"Alvin" => 1, "Simon" => 2})
+  end
 
 end

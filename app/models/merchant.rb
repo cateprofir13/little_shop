@@ -11,6 +11,7 @@ has_many :invoices
       .where(invoices: { status: 'returned' })
       .distinct
   end
+  
   def self.with_item_counts
      left_joins(:items)
       .select("merchants.*, COUNT(DISTINCT items.id) AS item_count")

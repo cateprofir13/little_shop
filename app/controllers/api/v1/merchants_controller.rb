@@ -42,11 +42,6 @@ module Api
         render json: MerchantSerializer.new(merchant)
       end
 
-      def with_item_counts
-        merchant = Merchant.with_item_counts
-        render json: MerchantSerializer.new(merchant)
-      end
-
       private
       def merchant_params
         params.require(:merchant).permit(:name)
