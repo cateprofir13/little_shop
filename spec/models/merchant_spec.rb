@@ -10,3 +10,4 @@ RSpec.describe Merchant, type: :model do
     it { should have_many(:invoices) }
   end
 end
+
