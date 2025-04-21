@@ -58,7 +58,7 @@ describe "Merchants API", type: :request do
     expect(response).to have_http_status(:bad_request)
   
     parsed = JSON.parse(response.body, symbolize_names: true)
-    expect(parsed[:errors].first).to match(/param is missing/i)
+    expect(parsed[:errors].first).to match(/Missing required parameters: merchant/i)
   end
 
   it 'can delete a merchant and all its items' do
