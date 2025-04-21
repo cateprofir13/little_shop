@@ -39,17 +39,26 @@ describe "Merchants API", type: :request do
     expect(data[:attributes][:name]).to eq("Schroeder-Jerde")
   end
 
-  it 'can create a new merchant' do
-    merchant_params = {
-                        name: "Calvin D Suiter",
-    }
-    headers = { "CONTENT_TYPE" => "application/json"}
+  it 'can create a new merchant with only name' do
+    headers = { "CONTENT_TYPE" => "application/json" }
+  
+    post "/api/v1/merchants", headers: headers, params: JSON.generate({ merchant: { name: "Toys R Us" } })
+  
+    expect(response).to have_http_status(:created)
+  
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed[:data][:attributes][:name]).to eq("Toys R Us")
+  end
 
-    post "/api/v1/merchants", headers: headers, params: JSON.generate(merchant: merchant_params)
-    created_merchant = Merchant.last         
-
-    expect(response).to be_successful
-    expect(created_merchant.name).to eq(merchant_params[:name])
+  it 'returns an error if name param is missing entirely' do
+    headers = { "CONTENT_TYPE" => "application/json" }
+  
+    post "/api/v1/merchants", headers: headers, params: JSON.generate({})
+  
+    expect(response).to have_http_status(:bad_request)
+  
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed[:errors].first).to match(/param is missing/i)
   end
 
   it 'can delete a merchant and all its items' do

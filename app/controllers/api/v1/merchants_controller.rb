@@ -2,6 +2,7 @@ module Api
   module V1
     class MerchantsController < ApplicationController
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+      rescue_from ActionController::ParameterMissing, with: :missing_param
 
       def index
         if params[:returned_items] == "true"
@@ -27,8 +28,13 @@ module Api
       end
 
       def create
-        merchant = Merchant.create(merchant_params)
-        render json: MerchantSerializer.new(merchant), status: :created
+        merchant = Merchant.new(merchant_params)
+      
+        if merchant.save
+          render json: MerchantSerializer.new(merchant), status: :created
+        else
+          render json: { errors: merchant.errors.full_messages }, status: :bad_request
+        end
       end
 
       def destroy
@@ -49,6 +55,10 @@ module Api
 
       def record_not_found(error)
         render json: { errors: [error.message] }, status: :not_found
+      end
+      
+      def missing_param(error)
+        render json: { errors: [error.message] }, status: :bad_request
       end
 
     end
