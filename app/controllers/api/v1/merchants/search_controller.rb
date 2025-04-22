@@ -34,11 +34,11 @@ module Api
         end
         
         def find_merchant
-          Merchant.search(params).first
+          Merchant.search(search_params).first
         end
         
         def find_all_merchants
-          Merchant.search(params)
+          Merchant.search(search_params)
         end
       end
     end
