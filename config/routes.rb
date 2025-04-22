@@ -6,24 +6,33 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   
   # Search Endpoints
-  get "/api/v1/merchants/find", to: "api/v1/merchants/search#show"
-  get "/api/v1/merchants/find_all", to: "api/v1/merchants/search#index"
-  get "/api/v1/items/find", to: "api/v1/items/search#show"
-  get "/api/v1/items/find_all", to: "api/v1/items/search#index"
-  
+  namespace :api do
+    namespace :v1 do
+      namespace :merchants do
+        controller :search do
+          get :find, action: :show
+          get :find_all, action: :index
+        end
+      end
+    end
+  end
+  namespace :api do
+    namespace :v1 do
+      resources :items, only: [:find, :find_all] do
+      end
+    end
+  end
   # Merchant endpoints
-  get "/api/v1/merchants", to: "api/v1/merchants#index"
-  get "/api/v1/merchants/:id", to: "api/v1/merchants#show"
-  post "/api/v1/merchants", to: "api/v1/merchants#create"
-  patch "/api/v1/merchants/:id", to: "api/v1/merchants#update"
-  put "/api/v1/merchants/:id", to: "api/v1/merchants#update"
-  delete "/api/v1/merchants/:id", to: "api/v1/merchants#destroy"
-  
+  namespace :api do
+    namespace :v1 do
+      resources :merchants, only: [:index, :show, :create, :update, :destroy] do
+      end
+    end
+  end  
   # Merchant nested endpoints
   get "/api/v1/merchants/:merchant_id/items", to: "api/v1/merchant_items#index"
   get "/api/v1/merchants/:merchant_id/customers", to: "api/v1/merchant_customers#index"
   get "/api/v1/merchants/:merchant_id/invoices", to: "api/v1/merchant_invoices#index"
-  
   # Item endpoints
   get "/api/v1/items", to: "api/v1/items#index"
   get "/api/v1/items/:id", to: "api/v1/items#show"
