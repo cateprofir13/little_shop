@@ -40,13 +40,12 @@ Rails.application.routes.draw do
     end
   end
   # Item endpoints
-  get "/api/v1/items", to: "api/v1/items#index"
-  get "/api/v1/items/:id", to: "api/v1/items#show"
-  post "/api/v1/items", to: "api/v1/items#create"
-  patch "/api/v1/items/:id", to: "api/v1/items#update"
-  put "/api/v1/items/:id", to: "api/v1/items#update"
-  delete "/api/v1/items/:id", to: "api/v1/items#destroy"
-  
+  namespace :api do
+    namespace :v1 do
+      resources :items, only: [:index, :show, :create, :update, :destroy] do
+      end
+    end
+  end  
   # Item nested endpoints
   get "/api/v1/items/:item_id/merchant", to: "api/v1/item_merchants#show"
 end
