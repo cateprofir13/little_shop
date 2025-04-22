@@ -25,6 +25,22 @@ RSpec.describe "Merchant Invoices", type: :request do
       end
     end
 
+    it 'returns invoices filtered by status' do
+      merchant = Merchant.create!(name: "Test Merchant")
+      customer = Customer.create!(first_name: "Cal", last_name: "Suiter")
+      
+      invoice1 = Invoice.create!(status: "shipped", merchant: merchant, customer: customer)
+      invoice2 = Invoice.create!(status: "returned", merchant: merchant, customer: customer)
+    
+      get "/api/v1/merchants/#{merchant.id}/invoices?status=shipped"
+    
+      expect(response).to be_successful
+    
+      parsed = JSON.parse(response.body, symbolize_names: true)
+      expect(parsed[:data].length).to eq(1)
+      expect(parsed[:data].first[:attributes][:status]).to eq("shipped")
+    end
+
     it "returns a 404 if merchant is not found" do
       get "/api/v1/merchants/999999/invoices" 
     

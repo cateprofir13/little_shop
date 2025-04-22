@@ -39,26 +39,15 @@ describe "Merchants API", type: :request do
     expect(data[:attributes][:name]).to eq("Schroeder-Jerde")
   end
 
-  it 'can create a new merchant with only name' do
+  it 'can create a new merchant with name attribute' do
     headers = { "CONTENT_TYPE" => "application/json" }
   
-    post "/api/v1/merchants", headers: headers, params: JSON.generate({ merchant: { name: "Toys R Us" } })
+    post "/api/v1/merchants", headers: headers, params: JSON.generate({ merchant: { name: "Lego" } })
   
     expect(response).to have_http_status(:created)
   
     parsed = JSON.parse(response.body, symbolize_names: true)
-    expect(parsed[:data][:attributes][:name]).to eq("Toys R Us")
-  end
-
-  it 'returns an error if name param is missing entirely' do
-    headers = { "CONTENT_TYPE" => "application/json" }
-  
-    post "/api/v1/merchants", headers: headers, params: JSON.generate({})
-  
-    expect(response).to have_http_status(:bad_request)
-  
-    parsed = JSON.parse(response.body, symbolize_names: true)
-    expect(parsed[:errors].first).to match(/Missing required parameters: merchant/i)
+    expect(parsed[:data][:attributes][:name]).to eq("Lego")
   end
 
   it 'can delete a merchant and all its items' do
@@ -93,17 +82,6 @@ describe "Merchants API", type: :request do
     expect(merchant.name).to eq("Profir Suiter")
   end
 
-  it "returns a 404 and error message if merchant is not found" do
-    
-    get "/api/v1/merchants/999999"
-  
-    expect(response).to have_http_status(:not_found)
-  
-    error_response = JSON.parse(response.body, symbolize_names: true)
-    expect(error_response).to have_key(:errors)
-    expect(error_response[:errors].first).to match(/Couldn't find Merchant/)
-  end
-
   it "returns serialized merchants with item_count when count=true is passed" do
     merchant = Merchant.create!(name: "Test Merchant")
     merchant.items.create!(name: "Item A", description: "desc", unit_price: 10)
@@ -119,7 +97,6 @@ describe "Merchants API", type: :request do
     expect(merchant_data[:attributes]).to include(:item_count)
     expect(merchant_data[:attributes][:item_count]).to eq(2)
   end
-
 
   it "returns merchants sorted from newest to oldest via index controller" do
     m1 = Merchant.create!(name: "Old", created_at: 3.days.ago)
@@ -163,5 +140,40 @@ describe "Merchants API", type: :request do
 
     expect(merchant_with_counts).to eq({"Alvin" => 1, "Simon" => 2})
   end
+
+  it 'returns an error if merchant name is blank' do
+    headers = { "CONTENT_TYPE" => "application/json" }
+  
+    post "/api/v1/merchants", headers: headers, params: JSON.generate({ merchant: { name: "" } })
+  
+    expect(response).to have_http_status(:bad_request)
+  
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed).to have_key(:errors)
+    expect(parsed[:errors].first).to match(/can't be blank/i)
+  end
+
+  it "returns a 404 and error message if merchant is not found" do
+    
+    get "/api/v1/merchants/999999"
+  
+    expect(response).to have_http_status(:not_found)
+  
+    error_response = JSON.parse(response.body, symbolize_names: true)
+    expect(error_response).to have_key(:errors)
+    expect(error_response[:errors].first).to match(/Couldn't find Merchant/)
+  end
+
+  it 'returns an error if name param is missing entirely' do
+    headers = { "CONTENT_TYPE" => "application/json" }
+  
+    post "/api/v1/merchants", headers: headers, params: JSON.generate({})
+  
+    expect(response).to have_http_status(:bad_request)
+  
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed[:errors].first).to match(/Missing required parameters: merchant/i)
+  end
+
 
 end
