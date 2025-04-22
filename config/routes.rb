@@ -30,9 +30,15 @@ Rails.application.routes.draw do
     end
   end  
   # Merchant nested endpoints
-  get "/api/v1/merchants/:merchant_id/items", to: "api/v1/merchant_items#index"
-  get "/api/v1/merchants/:merchant_id/customers", to: "api/v1/merchant_customers#index"
-  get "/api/v1/merchants/:merchant_id/invoices", to: "api/v1/merchant_invoices#index"
+  namespace :api do
+    namespace :v1 do
+      resources :merchants, only: [] do
+        resources :items, only: [:index], controller: 'merchant_items'
+        resources :customers, only: [:index], controller: 'merchant_customers'
+        resources :invoices, only: [:index], controller: 'merchant_invoices'
+      end
+    end
+  end
   # Item endpoints
   get "/api/v1/items", to: "api/v1/items#index"
   get "/api/v1/items/:id", to: "api/v1/items#show"
