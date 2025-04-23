@@ -200,6 +200,26 @@ RSpec.describe "Items Search API", type: :request do
         get "/api/v1/items/find?min_price=0"
         expect_error_response
       end
+
+      it "only min_price" do
+        get "/api/v1/items/find?min_price=50"
+        
+        expect_successful_response
+        
+        item = parse_response[:data]
+        expect(item).not_to be_nil
+        expect(item[:attributes][:unit_price]).to be >= 50 if item[:attributes].present?
+      end
+
+      it "only max_price" do
+        get "/api/v1/items/find?max_price=200"
+        
+        expect_successful_response
+        
+        item = parse_response[:data]
+        expect(item).not_to be_nil
+        expect(item[:attributes][:unit_price]).to be <= 200 if item[:attributes].present?
+      end
     end
   end
 
